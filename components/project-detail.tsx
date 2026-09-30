@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowUpRight, Check, Github, LockKeyhole, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Code2, LockKeyhole, ShieldCheck } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { BrandMark } from "@/components/brand-mark";
 import { ProjectVisual } from "@/components/project-visual";
@@ -100,7 +100,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           <div className="relative mt-6 md:mt-0">
             {project.github ? (
               <a href={project.github} target="_blank" className="inline-flex items-center gap-3 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-black transition hover:bg-[#dceeff]">
-                <Github size={16} /> Open GitHub <ArrowUpRight size={15} />
+                <Code2 size={16} /> Open GitHub <ArrowUpRight size={15} />
               </a>
             ) : (
               <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3.5 mono text-[9px] tracking-[.14em] text-white/42">
