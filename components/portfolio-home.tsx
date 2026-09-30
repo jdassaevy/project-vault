@@ -8,7 +8,6 @@ import {
   ArrowUpRight,
   Code2,
   Layers3,
-  Mail,
   Sparkles,
   Terminal,
   X,
@@ -132,10 +131,11 @@ export function PortfolioHome() {
                 <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />
               </a>
               <a
-                href="mailto:hello@jdassaevy.dev"
+                href="https://github.com/jdassaevy"
+                target="_blank"
                 className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[.025] px-5 py-3.5 text-sm text-white/65 transition hover:bg-white/[.06] hover:text-white"
               >
-                <Mail size={15} /> Contact
+                <Code2 size={15} /> GitHub profile
               </a>
             </div>
           </motion.div>
@@ -297,10 +297,11 @@ export function PortfolioHome() {
               <Code2 size={17} />
             </a>
             <a
-              href="mailto:hello@jdassaevy.dev"
+              href="https://github.com/jdassaevy"
+              target="_blank"
               className="rounded-full border border-white/10 px-5 py-3 mono text-[9px] tracking-[.16em] text-white/55 transition hover:bg-white hover:text-black"
             >
-              CONTACT ↗
+              PROFILE ↗
             </a>
           </div>
         </div>
