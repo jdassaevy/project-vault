@@ -72,7 +72,7 @@ export function PortfolioHome() {
 
       <header className="fixed inset-x-0 top-0 z-50 mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-9">
         <BrandMark />
-        <nav className="glass flex items-center gap-1 rounded-full p-1.5 mono text-[9px] tracking-[.14em] text-white/55">
+        <nav className="glass flex items-center gap-1 rounded-full p-1.5 mono text-[9px] tracking-[.14em] text-white/72">
           <a
             href="#projects"
             className="rounded-full px-4 py-2.5 transition hover:bg-white/[.06] hover:text-white"
@@ -88,7 +88,7 @@ export function PortfolioHome() {
           <a
             href="https://github.com/jdassaevy"
             target="_blank"
-            className="rounded-full bg-white px-4 py-2.5 text-black transition hover:bg-[#d9ecff]"
+            className="rounded-full border border-white/10 bg-[#F5F8FF] px-4 py-2.5 text-[10px] font-semibold tracking-[.12em] text-[#05070A] shadow-[0_6px_24px_rgba(255,255,255,0.08)] transition hover:bg-white"
           >
             GITHUB ↗
           </a>
@@ -125,7 +125,7 @@ export function PortfolioHome() {
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="group flex items-center gap-3 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-black transition hover:bg-[#dceeff]"
+                className="group flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white"
               >
                 Explore the vault
                 <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />
@@ -133,7 +133,7 @@ export function PortfolioHome() {
               <a
                 href="https://github.com/jdassaevy"
                 target="_blank"
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[.025] px-5 py-3.5 text-sm text-white/65 transition hover:bg-white/[.06] hover:text-white"
+                className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-5 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/[.08] hover:text-white"
               >
                 <Code2 size={15} /> GitHub profile
               </a>
@@ -292,14 +292,14 @@ export function PortfolioHome() {
             <a
               href="https://github.com/jdassaevy"
               target="_blank"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:bg-white hover:text-black"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[.03] text-white/85 transition hover:bg-white hover:text-[#05070A]"
             >
               <Code2 size={17} />
             </a>
             <a
               href="https://github.com/jdassaevy"
               target="_blank"
-              className="rounded-full border border-white/10 px-5 py-3 mono text-[9px] tracking-[.16em] text-white/55 transition hover:bg-white hover:text-black"
+              className="rounded-full border border-white/15 bg-white/[.03] px-5 py-3 mono text-[9px] tracking-[.16em] text-white/88 transition hover:bg-white hover:text-[#05070A]"
             >
               PROFILE ↗
             </a>
