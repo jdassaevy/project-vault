@@ -7,7 +7,6 @@ import {
   ArrowDown,
   ArrowUpRight,
   Code2,
-  Github,
   Layers3,
   Mail,
   Sparkles,
@@ -295,7 +294,7 @@ export function PortfolioHome() {
               target="_blank"
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:bg-white hover:text-black"
             >
-              <Github size={17} />
+              <Code2 size={17} />
             </a>
             <a
               href="mailto:hello@jdassaevy.dev"
