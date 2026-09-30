@@ -13,7 +13,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 h-[700px]" />
       <header className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-9">
         <Link href="/"><BrandMark /></Link>
-        <Link href="/#projects" className="glass flex items-center gap-2 rounded-full px-4 py-2.5 mono text-[9px] tracking-[.14em] text-white/55 transition hover:text-white">
+        <Link href="/#projects" className="glass flex items-center gap-2 rounded-full border border-white/15 bg-white/[.04] px-4 py-2.5 mono text-[9px] font-semibold tracking-[.14em] text-white/85 transition hover:bg-white/[.08] hover:text-white">
           <ArrowLeft size={13} /> BACK TO VAULT
         </Link>
       </header>
@@ -99,11 +99,11 @@ export function ProjectDetail({ project }: { project: Project }) {
 
           <div className="relative mt-6 md:mt-0">
             {project.github ? (
-              <a href={project.github} target="_blank" className="inline-flex items-center gap-3 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-black transition hover:bg-[#dceeff]">
+              <a href={project.github} target="_blank" className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white">
                 <Code2 size={16} /> Open GitHub <ArrowUpRight size={15} />
               </a>
             ) : (
-              <span className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-5 py-3.5 mono text-[9px] tracking-[.14em] text-white/42">
+              <span className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[.03] px-5 py-3.5 mono text-[9px] font-semibold tracking-[.14em] text-white/75">
                 <LockKeyhole size={13} /> PRIVATE SOURCE
               </span>
             )}
