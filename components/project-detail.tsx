@@ -7,6 +7,7 @@ import type { Project } from "@/data/projects";
 import { BrandMark } from "@/components/brand-mark";
 import { ProjectVisual } from "@/components/project-visual";
 import { StudentsRegistrationWalkthrough } from "@/components/students-registration-walkthrough";
+import { StudentsRegistrationArchitecture } from "@/components/students-registration-architecture";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -83,6 +84,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       </section>
 
       {project.slug === "students-registration" && <StudentsRegistrationWalkthrough />}
+      {project.slug === "students-registration" && <StudentsRegistrationArchitecture />}
 
       <section className="mx-auto max-w-[1440px] px-5 pb-28 pt-20 md:px-9">
         <div className="relative overflow-hidden rounded-[28px] border border-white/[.08] bg-white/[.025] p-8 md:flex md:items-center md:justify-between md:p-10">
