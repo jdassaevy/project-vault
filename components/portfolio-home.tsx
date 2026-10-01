@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -20,6 +20,21 @@ const featured = projects.find((project) => project.featured)!;
 
 export function PortfolioHome() {
   const [booted, setBooted] = useState(false);
+  const heroRef = useRef<HTMLElement | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 1, 0.08]);
+  const featuredY = useTransform(scrollYProgress, [0, 1], [0, 135]);
+  const featuredScale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
+  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.28, 0.58], [0.8, 0.8, 0]);
+  const scrollProgressScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setBooted(true), 1150);
@@ -68,7 +83,10 @@ export function PortfolioHome() {
         )}
       </AnimatePresence>
 
-      <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 h-[900px]" />
+      <motion.div
+        className="grid-bg pointer-events-none absolute inset-x-0 top-0 h-[900px]"
+        style={reduceMotion ? undefined : { opacity: heroOpacity }}
+      />
 
       <header className="fixed inset-x-0 top-0 z-50 mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 md:px-9">
         <BrandMark />
@@ -95,8 +113,14 @@ export function PortfolioHome() {
         </nav>
       </header>
 
-      <section className="relative mx-auto flex min-h-[880px] max-w-[1440px] items-center px-5 pb-20 pt-28 md:px-9">
-        <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_.95fr]">
+      <section
+        ref={heroRef}
+        className="relative mx-auto flex min-h-[880px] max-w-[1440px] items-center px-5 pb-20 pt-28 md:px-9"
+      >
+        <motion.div
+          className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_.95fr]"
+          style={reduceMotion ? undefined : { y: heroY, scale: heroScale, opacity: heroOpacity }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={booted ? { opacity: 1, y: 0 } : {}}
@@ -146,6 +170,10 @@ export function PortfolioHome() {
             transition={{ delay: 0.22, duration: 0.6 }}
             className="relative hidden lg:block"
           >
+            <motion.div
+              style={reduceMotion ? undefined : { y: featuredY, scale: featuredScale }}
+              className="relative"
+            >
             <div className="absolute -inset-10 rounded-full bg-[#438de6]/10 blur-[90px]" />
             <div className="glass accent-glow relative rounded-[30px] p-4">
               <div className="mb-3 flex items-center justify-between px-1 mono text-[8px] tracking-[.2em] text-white/35">
@@ -159,8 +187,23 @@ export function PortfolioHome() {
                 <Metric label="BUILD" value="2026" />
               </div>
             </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-4 md:flex"
+          style={reduceMotion ? undefined : { opacity: scrollCueOpacity }}
+        >
+          <span className="mono text-[8px] tracking-[.24em] text-white/28">SCROLL TO ENTER VAULT</span>
+          <div className="h-px w-24 overflow-hidden bg-white/10">
+            <motion.div
+              className="h-full origin-left bg-gradient-to-r from-[#6bb6ff] to-[#8b7cff]"
+              style={reduceMotion ? { scaleX: 1 } : { scaleX: scrollProgressScale }}
+            />
+          </div>
+        </motion.div>
       </section>
 
       <section
@@ -177,10 +220,10 @@ export function PortfolioHome() {
           {projects.map((project, index) => (
             <motion.div
               key={project.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 28, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: index * 0.06 }}
+              transition={{ delay: index * 0.07, duration: 0.5, ease: "easeOut" }}
             >
               <Link
                 href={`/projects/${project.slug}`}
