@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight, Check, Code2, LockKeyhole, ShieldCheck } from 
 import type { Project } from "@/data/projects";
 import { BrandMark } from "@/components/brand-mark";
 import { ProjectVisual } from "@/components/project-visual";
+import { StudentsRegistrationWalkthrough } from "@/components/students-registration-walkthrough";
 
 export function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -81,7 +82,9 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1440px] px-5 pb-28 pt-12 md:px-9">
+      {project.slug === "students-registration" && <StudentsRegistrationWalkthrough />}
+
+      <section className="mx-auto max-w-[1440px] px-5 pb-28 pt-20 md:px-9">
         <div className="relative overflow-hidden rounded-[28px] border border-white/[.08] bg-white/[.025] p-8 md:flex md:items-center md:justify-between md:p-10">
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#65b6ff]/10 blur-[80px]" />
           <div className="relative">
