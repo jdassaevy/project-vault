@@ -286,7 +286,7 @@ function BrowserFrame({ active, compact = false }: { active: number; compact?: b
             className="absolute inset-0 bg-no-repeat"
             style={{
               backgroundImage:
-                "url('/projects/students-registration/walkthrough.webp')",
+                "url('/projects/students-registration/walkthrough.webp?v=2')",
               backgroundSize: "100% 600%",
               backgroundPosition: `center ${active * 20}%`,
             }}
