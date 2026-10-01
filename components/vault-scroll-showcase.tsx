@@ -63,14 +63,22 @@ export function VaultScrollShowcase() {
           gsap.set(progress, { scaleX: 0, transformOrigin: "0% 50%" });
         }
 
+        const introSegment = 0.9;
+        const panelSegment = 1.55;
+        const panelEnter = 0.38;
+        const panelHold = 0.72;
+        const panelExit = 0.42;
+        const totalDuration = introSegment + panels.length * panelSegment;
+        const scrollDistance = 520 + panels.length * 760;
+
         const timeline = gsap.timeline({
           defaults: { ease: "none" },
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
-            end: `+=${projects.length * 1050 + 900}`,
+            end: `+=${scrollDistance}`,
             pin: true,
-            scrub: 1.05,
+            scrub: 0.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
@@ -81,7 +89,7 @@ export function VaultScrollShowcase() {
             progress,
             {
               scaleX: 1,
-              duration: projects.length * 1.65 + 1,
+              duration: totalDuration,
             },
             0,
           );
@@ -94,84 +102,84 @@ export function VaultScrollShowcase() {
               letterSpacing: "0.72em",
               opacity: 0,
               y: -24,
-              duration: 0.55,
+              duration: 0.38,
             },
             0,
           )
           .to(
             ".vault-intro-title",
             {
-              scale: 1.5,
+              scale: 1.42,
               opacity: 0,
               filter: "blur(12px)",
-              duration: 0.9,
+              duration: 0.72,
               ease: "power2.in",
             },
-            0.08,
+            0.04,
           )
           .to(
             ".vault-intro-frame",
             {
-              scale: 1.18,
+              scale: 1.14,
               opacity: 0,
-              duration: 0.85,
+              duration: 0.68,
               ease: "power2.in",
             },
-            0.08,
+            0.04,
           )
           .to(
             ".vault-intro-sub",
             {
               opacity: 0,
-              y: 22,
-              duration: 0.4,
+              y: 18,
+              duration: 0.28,
             },
-            0.15,
+            0.08,
           );
 
         panels.forEach((panel, index) => {
           const copy = panel.querySelectorAll(".vault-panel-copy");
           const panelVisual = panel.querySelector(".vault-panel-visual");
-          const enterAt = index === 0 ? ">-0.05" : ">-0.08";
+          const panelStart = introSegment + index * panelSegment;
 
-          timeline
-            .to(
-              panel,
-              {
-                yPercent: 0,
-                opacity: 1,
-                scale: 1,
-                rotateX: 0,
-                filter: "blur(0px)",
-                duration: 1.05,
-                ease: "power3.out",
-              },
-              enterAt,
-            )
-            .fromTo(
-              copy,
-              { opacity: 0, y: 46 },
-              {
-                opacity: 1,
-                y: 0,
-                duration: 0.62,
-                stagger: 0.06,
-                ease: "power2.out",
-              },
-              "<0.18",
-            );
+          timeline.to(
+            panel,
+            {
+              yPercent: 0,
+              opacity: 1,
+              scale: 1,
+              rotateX: 0,
+              filter: "blur(0px)",
+              duration: panelEnter,
+              ease: "power3.out",
+            },
+            panelStart,
+          );
+
+          timeline.fromTo(
+            copy,
+            { opacity: 0, y: 42 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.34,
+              stagger: 0.035,
+              ease: "power2.out",
+            },
+            panelStart + 0.08,
+          );
 
           if (panelVisual) {
             timeline.fromTo(
               panelVisual,
-              { scale: 0.86, rotateZ: index % 2 === 0 ? 3 : -3 },
+              { scale: 0.9, rotateZ: index % 2 === 0 ? 2.2 : -2.2 },
               {
                 scale: 1,
                 rotateZ: 0,
-                duration: 0.85,
+                duration: 0.42,
                 ease: "power3.out",
               },
-              "<0.05",
+              panelStart + 0.03,
             );
           }
 
@@ -179,29 +187,41 @@ export function VaultScrollShowcase() {
             timeline.to(
               orb,
               {
-                xPercent: index % 2 === 0 ? 26 : -20,
-                yPercent: index % 3 === 0 ? -12 : 18,
-                scale: 1 + index * 0.12,
-                duration: 0.9,
+                xPercent: index % 2 === 0 ? 22 : -18,
+                yPercent: index % 3 === 0 ? -10 : 15,
+                scale: 1 + index * 0.1,
+                duration: 0.46,
                 ease: "power2.inOut",
               },
-              "<",
+              panelStart + 0.06,
             );
           }
 
-          timeline.to({}, { duration: 0.45 });
+          timeline.to(
+            panel,
+            {
+              scale: 1.012,
+              duration: panelHold,
+              ease: "none",
+            },
+            panelStart + panelEnter,
+          );
 
-          timeline.to(panel, {
-            yPercent: -26,
-            scale: 0.9,
-            opacity: index === panels.length - 1 ? 0 : 0.08,
-            filter: "blur(8px)",
-            duration: 0.78,
-            ease: "power2.in",
-          });
+          timeline.to(
+            panel,
+            {
+              yPercent: -24,
+              scale: 0.92,
+              opacity: 0,
+              filter: "blur(8px)",
+              duration: panelExit,
+              ease: "power2.in",
+            },
+            panelStart + panelEnter + panelHold,
+          );
         });
 
-        timeline.to(".vault-stage-ui", { opacity: 0, duration: 0.35 }, ">-0.2");
+        timeline.to(".vault-stage-ui", { opacity: 0, duration: 0.25 }, totalDuration - 0.18);
 
         return () => {
           timeline.scrollTrigger?.kill();
