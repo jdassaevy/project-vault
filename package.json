@@ -12,7 +12,9 @@
     "motion": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@gsap/react": "latest",
+    "gsap": "latest"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "latest",
