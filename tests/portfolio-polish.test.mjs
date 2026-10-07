@@ -9,7 +9,7 @@ test("home exposes a recruiter-friendly contact path", () => {
 
   assert.match(home, /id="contact"/);
   assert.match(home, /https:\/\/www\.linkedin\.com\/in\/juliodassaevy/);
-  assert.match(home, /mailto:dassaevyj@gmail\.com/);
+  assert.match(home, /mailto:dassaevylabs@gmail\.com/);
   assert.match(home, />\s*CONTACT\s*</);
 });
 
