@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
   Code2,
   Layers3,
+  Mail,
   Sparkles,
   Terminal,
   X,
@@ -21,6 +22,7 @@ const featured = projects.find((project) => project.featured)!;
 
 export function PortfolioHome() {
   const [booted, setBooted] = useState(false);
+
   useEffect(() => {
     const timer = window.setTimeout(() => setBooted(true), 1150);
     return () => window.clearTimeout(timer);
@@ -86,8 +88,15 @@ export function PortfolioHome() {
             PROFILE
           </a>
           <a
+            href="#contact"
+            className="hidden rounded-full px-4 py-2.5 transition hover:bg-white/[.06] hover:text-white md:block"
+          >
+            CONTACT
+          </a>
+          <a
             href="https://github.com/jdassaevy"
             target="_blank"
+            rel="noreferrer"
             className="rounded-full border border-white/10 bg-[#F5F8FF] px-4 py-2.5 text-[10px] font-semibold tracking-[.12em] text-[#05070A] shadow-[0_6px_24px_rgba(255,255,255,0.08)] transition hover:bg-white"
           >
             GITHUB ↗
@@ -133,6 +142,7 @@ export function PortfolioHome() {
               <a
                 href="https://github.com/jdassaevy"
                 target="_blank"
+                rel="noreferrer"
                 className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-5 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/[.08] hover:text-white"
               >
                 <Code2 size={15} /> GitHub profile
@@ -254,57 +264,120 @@ export function PortfolioHome() {
 
           <div className="rounded-[28px] border border-white/[.07] bg-white/[.018] p-7 md:p-9">
             <div className="flex items-center gap-2 mono text-[9px] tracking-[.2em] text-white/35">
-              <Sparkles size={13} /> CAPABILITY MATRIX
+              <Sparkles size={13} /> CORE CAPABILITIES
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <Skill
+              <Capability
                 title="Frontend Engineering"
                 tech="Next.js · React · TypeScript"
-                level="90"
+                detail="Responsive product interfaces, stateful flows and reusable UI systems."
               />
-              <Skill title="Backend & Data" tech="Supabase · PostgreSQL · APIs" level="84" />
-              <Skill
-                title="Product Integration"
+              <Capability
+                title="Backend & Data"
+                tech="Supabase · PostgreSQL · REST APIs"
+                detail="Authentication, tenant-aware data models and operational application state."
+              />
+              <Capability
+                title="Automation & Integrations"
                 tech="Meta API · Resend · Vercel"
-                level="86"
+                detail="Transactional messaging, external services and production delivery workflows."
               />
-              <Skill title="Product Thinking" tech="UX · Automation · Delivery" level="88" />
+              <Capability
+                title="Product Systems"
+                tech="UX · Workflows · Reliability"
+                detail="Turning real operational processes into software that stays understandable."
+              />
             </div>
-
-            <p className="mt-6 mono text-[8px] tracking-[.13em] text-white/25">
-              * MATRIX REPRESENTS PORTFOLIO FOCUS, NOT A CERTIFICATION SCORE.
-            </p>
           </div>
         </div>
       </section>
 
-      <footer className="mx-auto max-w-[1440px] px-5 pb-10 pt-20 md:px-9">
+      <section id="contact" className="relative mx-auto max-w-[1440px] px-5 py-20 md:px-9 md:py-28">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden rounded-[34px] border border-white/[.08] bg-[#080b10] p-7 md:p-11 lg:p-14"
+        >
+          <div className="grid-bg pointer-events-none absolute inset-0 opacity-45" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#5da9ff]/10 blur-[100px]" />
+          <div className="pointer-events-none absolute -bottom-24 left-[32%] h-72 w-72 rounded-full bg-[#8b7cff]/[.07] blur-[100px]" />
+
+          <div className="relative grid gap-10 lg:grid-cols-[1fr_.72fr] lg:items-end">
+            <div>
+              <div className="inline-flex items-center gap-3 mono text-[9px] tracking-[.2em] text-[#6bb6ff]">
+                <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#55d6a7]" />
+                CONTACT // OPEN CHANNEL
+              </div>
+
+              <h2 className="mt-6 max-w-4xl text-4xl font-semibold leading-[.95] tracking-[-.055em] md:text-6xl">
+                Looking for someone who can
+                <br />
+                <span className="text-gradient">build and ship?</span>
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-[#8793a5] md:text-base">
+                I&apos;m open to Full Stack, Front-end and Software Development opportunities.
+                If the work involves real product problems, integrations or automation, I&apos;d like
+                to hear about it.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://www.linkedin.com/in/juliodassaevy"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white"
+                >
+                  LinkedIn
+                  <ArrowUpRight size={15} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+                <a
+                  href="mailto:dassaevyj@gmail.com"
+                  className="inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-5 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/[.08] hover:text-white"
+                >
+                  <Mail size={15} /> Email me
+                </a>
+                <a
+                  href="https://github.com/jdassaevy"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 rounded-xl border border-white/[.09] px-5 py-3.5 text-sm text-white/60 transition hover:border-white/15 hover:text-white"
+                >
+                  <Code2 size={15} /> GitHub
+                </a>
+              </div>
+            </div>
+
+            <div className="rounded-[24px] border border-white/[.07] bg-white/[.018] p-6">
+              <p className="mono text-[8px] tracking-[.18em] text-white/30">OPPORTUNITY FILTER</p>
+              <div className="mt-5 space-y-3">
+                <ContactRow label="ROLE" value="FULL STACK / SOFTWARE" />
+                <ContactRow label="MODE" value="REMOTE · HYBRID · ON-SITE" />
+                <ContactRow label="REGION" value="FLORIANÓPOLIS / BRAZIL" />
+                <ContactRow label="STATUS" value="OPEN TO TALK" accent />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <footer className="mx-auto max-w-[1440px] px-5 pb-10 pt-8 md:px-9">
         <div className="border-t border-white/[.07] py-8 md:flex md:items-end md:justify-between">
           <div>
-            <p className="mono text-[9px] tracking-[.2em] text-white/30">
-              END OF ARCHIVE // FOR NOW
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-.04em]">
+            <p className="mono text-[9px] tracking-[.2em] text-white/30">JD // PROJECT VAULT</p>
+            <h2 className="mt-4 text-2xl font-semibold tracking-[-.04em] md:text-3xl">
               Build something worth opening.
             </h2>
+            <p className="mt-3 text-xs text-white/28">Julio Dassaevy · Software Engineering · 2026</p>
           </div>
 
-          <div className="mt-7 flex items-center gap-3 md:mt-0">
-            <a
-              href="https://github.com/jdassaevy"
-              target="_blank"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[.03] text-white/85 transition hover:bg-white hover:text-[#05070A]"
-            >
-              <Code2 size={17} />
-            </a>
-            <a
-              href="https://github.com/jdassaevy"
-              target="_blank"
-              className="rounded-full border border-white/15 bg-white/[.03] px-5 py-3 mono text-[9px] tracking-[.16em] text-white/88 transition hover:bg-white hover:text-[#05070A]"
-            >
-              PROFILE ↗
-            </a>
+          <div className="mt-7 flex flex-wrap items-center gap-2 md:mt-0">
+            <FooterLink href="https://github.com/jdassaevy" label="GITHUB ↗" external />
+            <FooterLink href="https://www.linkedin.com/in/juliodassaevy" label="LINKEDIN ↗" external />
+            <FooterLink href="mailto:dassaevyj@gmail.com" label="EMAIL" />
           </div>
         </div>
       </footer>
@@ -375,31 +448,60 @@ function ProfileRow({
   );
 }
 
-function Skill({
+function Capability({
   title,
   tech,
-  level,
+  detail,
 }: {
   title: string;
   tech: string;
-  level: string;
+  detail: string;
 }) {
   return (
     <div className="rounded-2xl border border-white/[.065] bg-white/[.02] p-5">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-sm font-medium">{title}</p>
-          <p className="mt-2 text-xs text-[#687587]">{tech}</p>
-        </div>
-        <span className="mono text-[9px] text-white/30">{level}</span>
-      </div>
-
-      <div className="mt-5 h-1 overflow-hidden rounded-full bg-white/[.05]">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-[#6bb6ff] to-[#8b7cff]"
-          style={{ width: `${level}%` }}
-        />
-      </div>
+      <p className="text-sm font-medium text-white/88">{title}</p>
+      <p className="mt-2 mono text-[8px] tracking-[.1em] text-[#6bb6ff]">{tech}</p>
+      <p className="mt-4 text-xs leading-6 text-[#687587]">{detail}</p>
     </div>
+  );
+}
+
+function ContactRow({
+  label,
+  value,
+  accent = false,
+}: {
+  label: string;
+  value: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-4 border-b border-white/[.055] pb-3 last:border-0 last:pb-0">
+      <span className="mono text-[7px] tracking-[.16em] text-white/28">{label}</span>
+      <span className={`mono text-right text-[8px] tracking-[.11em] ${accent ? "text-[#69ddb5]" : "text-white/65"}`}>
+        {value}
+      </span>
+    </div>
+  );
+}
+
+function FooterLink({
+  href,
+  label,
+  external = false,
+}: {
+  href: string;
+  label: string;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className="rounded-full border border-white/15 bg-white/[.03] px-4 py-2.5 mono text-[8px] tracking-[.14em] text-white/72 transition hover:bg-white hover:text-[#05070A]"
+    >
+      {label}
+    </a>
   );
 }
