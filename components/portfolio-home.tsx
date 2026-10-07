@@ -335,7 +335,7 @@ export function PortfolioHome() {
                   <ArrowUpRight size={15} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
                 <a
-                  href="mailto:dassaevyj@gmail.com"
+                  href="mailto:dassaevylabs@gmail.com"
                   className="inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/[.04] px-5 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/[.08] hover:text-white"
                 >
                   <Mail size={15} /> Email me
@@ -377,7 +377,7 @@ export function PortfolioHome() {
           <div className="mt-7 flex flex-wrap items-center gap-2 md:mt-0">
             <FooterLink href="https://github.com/jdassaevy" label="GITHUB ↗" external />
             <FooterLink href="https://www.linkedin.com/in/juliodassaevy" label="LINKEDIN ↗" external />
-            <FooterLink href="mailto:dassaevyj@gmail.com" label="EMAIL" />
+            <FooterLink href="mailto:dassaevylabs@gmail.com" label="EMAIL" />
           </div>
         </div>
       </footer>
