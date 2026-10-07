@@ -49,3 +49,17 @@ test("portfolio exposes sitemap and robots metadata routes", () => {
     assert.match(read("app/robots.ts"), /sitemap/);
   }
 });
+
+test("portfolio has a dedicated Open Graph image route", () => {
+  assert.equal(
+    existsSync("app/opengraph-image.tsx"),
+    true,
+    "app/opengraph-image.tsx should exist",
+  );
+
+  if (existsSync("app/opengraph-image.tsx")) {
+    const image = read("app/opengraph-image.tsx");
+    assert.match(image, /JD \/\/ PROJECT VAULT/);
+    assert.match(image, /FULL STACK DEVELOPMENT/);
+  }
+});
