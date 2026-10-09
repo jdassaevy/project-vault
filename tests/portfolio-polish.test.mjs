@@ -82,9 +82,12 @@ test("project detail renders a live-site CTA when a project has a live URL", () 
   assert.match(detail, /Visit live site/);
 });
 
-test("vault scrub range follows the project collection size", () => {
+test("project counters follow the project collection size", () => {
   const showcase = read("components/vault-scroll-showcase.tsx");
+  const home = read("components/portfolio-home.tsx");
 
   assert.doesNotMatch(showcase, /SCRUB \/\/ 01—04/);
   assert.match(showcase, /String\(projects\.length\)\.padStart\(2, "0"\)/);
+  assert.doesNotMatch(home, /Metric label="PROJECTS" value="04"/);
+  assert.match(home, /Metric label="PROJECTS" value=\{String\(projects\.length\)\.padStart\(2, "0"\)\}/);
 });
