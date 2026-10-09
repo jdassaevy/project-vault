@@ -164,7 +164,7 @@ export function PortfolioHome() {
               </div>
               <ProjectVisual project={featured} large />
               <div className="grid grid-cols-3 gap-2 pt-3">
-                <Metric label="PROJECTS" value="04" />
+                <Metric label="PROJECTS" value={String(projects.length).padStart(2, "0")} />
                 <Metric label="FOCUS" value="FULL STACK" />
                 <Metric label="BUILD" value="2026" />
               </div>

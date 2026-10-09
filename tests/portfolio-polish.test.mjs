@@ -63,3 +63,31 @@ test("portfolio has a dedicated Open Graph image route", () => {
     assert.match(image, /FULL STACK DEVELOPMENT/);
   }
 });
+
+test("Dassaevy Labs landing is exposed as a production project with live and source links", () => {
+  const projects = read("data/projects.ts");
+
+  assert.match(projects, /liveUrl\?: string/);
+  assert.match(projects, /slug: "dassaevy-labs-landing"/);
+  assert.match(projects, /title: "Dassaevy Labs"/);
+  assert.match(projects, /subtitle: "Commercial Landing Page"/);
+  assert.match(projects, /liveUrl: "https:\/\/dassaevylabs\.com\.br"/);
+  assert.match(projects, /github: "https:\/\/github\.com\/jdassaevy\/landing-page-dassaevylabs"/);
+});
+
+test("project detail renders a live-site CTA when a project has a live URL", () => {
+  const detail = read("components/project-detail.tsx");
+
+  assert.match(detail, /project\.liveUrl/);
+  assert.match(detail, /Visit live site/);
+});
+
+test("project counters follow the project collection size", () => {
+  const showcase = read("components/vault-scroll-showcase.tsx");
+  const home = read("components/portfolio-home.tsx");
+
+  assert.doesNotMatch(showcase, /SCRUB \/\/ 01—04/);
+  assert.match(showcase, /String\(projects\.length\)\.padStart\(2, "0"\)/);
+  assert.doesNotMatch(home, /Metric label="PROJECTS" value="04"/);
+  assert.match(home, /Metric label="PROJECTS" value=\{String\(projects\.length\)\.padStart\(2, "0"\)\}/);
+});

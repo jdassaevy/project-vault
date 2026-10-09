@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowUpRight, Check, Code2, LockKeyhole, ShieldCheck } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Check,
+  Code2,
+  Globe2,
+  LockKeyhole,
+  ShieldCheck,
+} from "lucide-react";
 import type { Project } from "@/data/projects";
 import { BrandMark } from "@/components/brand-mark";
 import { ProjectVisual } from "@/components/project-visual";
@@ -97,23 +105,45 @@ export function ProjectDetail({ project }: { project: Project }) {
               {project.access === "PUBLIC" ? "SOURCE AVAILABLE" : "PRIVATE REPOSITORY"}
             </div>
             <h3 className="mt-4 text-2xl font-semibold tracking-[-.03em]">Inspect the build.</h3>
-            <p className="mt-2 text-sm text-[#7c899a]">
-              {project.github
-                ? "Open the source repository and explore the project history."
-                : "This source repository is intentionally private; the case study documents the project publicly."}
+            <p className="mt-2 max-w-xl text-sm leading-6 text-[#7c899a]">
+              {project.liveUrl && project.github
+                ? "Open the live experience or inspect the source repository and project history."
+                : project.liveUrl
+                  ? "Open the live experience and explore the production build."
+                  : project.github
+                    ? "Open the source repository and explore the project history."
+                    : "This source repository is intentionally private; the case study documents the project publicly."}
             </p>
           </div>
 
-          <div className="relative mt-6 md:mt-0">
+          <div className="relative mt-6 flex flex-wrap gap-3 md:mt-0 md:justify-end">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white"
+              >
+                <Globe2 size={16} /> Visit live site <ArrowUpRight size={15} />
+              </a>
+            )}
+
             {project.github ? (
-              <a href={project.github} target="_blank" className="inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className={project.liveUrl
+                  ? "inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/[.03] px-5 py-3.5 text-sm font-semibold text-white/85 transition hover:bg-white/[.08] hover:text-white"
+                  : "inline-flex items-center gap-3 rounded-xl border border-white/10 bg-[#F5F8FF] px-5 py-3.5 text-sm font-semibold text-[#05070A] shadow-[0_8px_30px_rgba(255,255,255,0.10)] transition hover:bg-white"}
+              >
                 <Code2 size={16} /> Open GitHub <ArrowUpRight size={15} />
               </a>
-            ) : (
+            ) : !project.liveUrl ? (
               <span className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[.03] px-5 py-3.5 mono text-[9px] font-semibold tracking-[.14em] text-white/75">
                 <LockKeyhole size={13} /> PRIVATE SOURCE
               </span>
-            )}
+            ) : null}
           </div>
         </div>
       </section>
