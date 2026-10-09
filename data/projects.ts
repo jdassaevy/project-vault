@@ -11,6 +11,7 @@ export type Project = {
   stack: string[];
   highlights: string[];
   github?: string;
+  liveUrl?: string;
   accent: "blue" | "violet" | "green" | "amber";
   featured?: boolean;
 };
@@ -100,6 +101,30 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/jdassaevy/NLW-habits",
     accent: "violet",
+  },
+  {
+    slug: "dassaevy-labs-landing",
+    index: "05",
+    title: "Dassaevy Labs",
+    subtitle: "Commercial Landing Page",
+    category: "WEB · BUSINESS",
+    status: "PRODUCTION",
+    access: "PUBLIC",
+    description: "Commercial landing page designed to present digital services and turn visitors into qualified project leads.",
+    longDescription:
+      "A production landing page for Dassaevy Labs built to connect product presentation with business conversion. The experience brings together services, case studies, pricing, process, responsive motion, quote capture and direct WhatsApp/email contact in one polished commercial flow.",
+    stack: ["Next.js", "TypeScript", "Motion", "Resend", "Vercel"],
+    highlights: [
+      "Responsive commercial landing experience",
+      "Motion system with reduced-motion support",
+      "Quote request form and lead capture",
+      "SEO and structured business metadata",
+      "Service, case-study and pricing sections",
+      "WhatsApp and email conversion paths",
+    ],
+    github: "https://github.com/jdassaevy/landing-page-dassaevylabs",
+    liveUrl: "https://dassaevylabs.com.br",
+    accent: "blue",
   },
 ];
 
