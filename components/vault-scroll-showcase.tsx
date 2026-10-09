@@ -348,7 +348,9 @@ export function VaultScrollShowcase() {
           <div className="h-px flex-1 overflow-hidden bg-white/[.08]">
             <div className="vault-progress-fill h-full bg-gradient-to-r from-[#6bb6ff] via-[#80b8ff] to-[#8b7cff]" />
           </div>
-          <span className="mono text-[8px] tracking-[.2em] text-white/28">SCRUB // 01—04</span>
+          <span className="mono text-[8px] tracking-[.2em] text-white/28">
+            SCRUB // 01—{String(projects.length).padStart(2, "0")}
+          </span>
         </div>
       </div>
 
